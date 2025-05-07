@@ -1,0 +1,60 @@
+---
+import Logo from './logo.astro'
+---
+
+<header
+  class="transition-colors duration-200 ease-in-out py-4 px-12 flex items-center fixed top-0 w-full z-50 justify-between text-white"
+  id="header"
+>
+  <div class="flex flex-grow basis-0">
+    <Logo />
+  </div>
+  <nav>
+    <ul
+      id="list"
+      class="transition-colors duration-200 ease-in-out flex text-sm [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
+    >
+      <li class="relative group">
+        <a href="" id="linkNav" class=""> Vehículos </a>
+        <div
+          class="absolute left-0 top-full w-screen h-[80vh] bg-black bg-opacity-90 text-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-40"
+        >
+          <div class="max-w-7xl mx-auto p-8 grid grid-cols-3 gap-4"></div>
+        </div>
+      </li>
+      <li><a href="">Energia</a></li>
+      <li><a href="">Carga</a></li>
+      <li><a href="">Descubrir</a></li>
+    </ul>
+  </nav>
+  <nav class="flex flex-grow justify-end basis-0">
+    <ul class="flex text-sm [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2">
+      <li><a href="">Ayuda</a></li>
+      <li><a href="">Region y lenguaj</a></li>
+      <li><a href="">Cuenta</a></li>
+    </ul>
+  </nav>
+</header>
+<script is:inline>
+  const padre = document.getElementById('header')
+  const hijo = document.getElementById('linkNav')
+  const lista = document.getElementById('list')
+
+  if (padre && hijo) {
+    hijo.addEventListener('mouseenter', () => {
+      padre.classList.add('bg-white', 'text-black', 'transition', 'duration-300', 'ease-in-out')
+      padre.classList.remove('text-white')
+      lista.classList.add('text-black')
+      lista.classList.remove('text-white')
+      hijo.classList.add('bg-gray-100', 'rounded')
+    })
+
+    hijo.addEventListener('mouseleave', () => {
+      padre.classList.remove('bg-white', 'text-black')
+      padre.classList.add('text-white')
+      lista.classList.remove('text-black')
+      lista.classList.add('text-white')
+      hijo.classList.remove('bg-gray-100')
+    })
+  }
+</script>
