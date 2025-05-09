@@ -3,19 +3,48 @@ import '../styles/global.css'
 import Layout from '../layouts/Mylayout.astro'
 import LandingHeader from '../components/LandingHeader.astro'
 import HeroSection from '../components/HeroSection.astro'
+import FooterButtons from '../components/FooterButtons.astro'
 ---
 
 <Layout>
   <main>
     <LandingHeader />
-    <HeroSection backgroundImage="/Tesla/Homepage-Model-Y-2-Hero-Desktop-APAC-LHD.avif"
-    title="Model Y"/>
-    <HeroSection backgroundImage="/Tesla/Homepage-Model-3-Desktop-US.avif"
-    title="Model 3"
-    subtitle="Agenda una prueba de manejo"/>
-    <HeroSection backgroundImage="/Tesla/Homepage-Model-X-Desktop-US.avif"
-    title="Model x"/>
-    <HeroSection backgroundImage="/Tesla/Homepage-Model-X-Desktop-US.avif"
-    title="Model x"/>
+    <HeroSection
+      backgroundImage="/Tesla/Homepage-Model-Y-2-Hero-Desktop-APAC-LHD.avif"
+      title="Model Y"
+    >
+      <FooterButtons slot="footer" LeftButtons={true} />
+    </HeroSection>
+
+    <HeroSection
+      backgroundImage="/Tesla/Homepage-Model-3-Desktop-US.avif"
+      title="Model 3"
+      subtitle="Agenda una prueba de manejo"
+    >
+      <FooterButtons slot="footer" RightButtons={true} />
+    </HeroSection>
+
+    <HeroSection backgroundImage="/Tesla/Homepage-Model-X-Desktop-US.avif" title="Model X">
+      <FooterButtons slot="footer" SingleButtons={true} title="Más informacíon" /></HeroSection
+    >
+    <HeroSection backgroundImage="/Tesla/Homepage-Model-S-Desktop-US.avif" title="Model S">
+      <FooterButtons slot="footer" SingleButtons={true} title="Más informacíon" /></HeroSection
+    >
+    <HeroSection
+      videoSrc="/Tesla/Homepage-Demo-Drive-Desktop-NA.webm"
+      title="Vive la experiencia Tesla"
+      subtitle="Agenda hoy una prueba de manejo"
+    >
+      <FooterButtons slot="footer" SingleButtons={true} title="Prueba de manejo" /></HeroSection
+    >
   </main>
+  <HeroSection
+    backgroundImage="/Tesla/Homepage-Solar-Panels-Desktop-v2.avif"
+    title="Energía solar y Powerwall"
+    subtitle="Totalmente eléctrico"
+  >
+        <FooterButtons slot="footer" SingleButtons={true} title="Más informacíon" /></HeroSection>
+
+</HeroSection>
+  <HeroSection videoSrc="/Tesla/Homepage-We-Are-Tesla-Tablet.webm" />
 </Layout>
