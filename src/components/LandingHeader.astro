@@ -1,10 +1,9 @@
 ---
-import Logo from "./Logo.astro";
-
+import Logo from './Logo.astro'
 ---
 
 <header
-  class="transition-colors duration-200 ease-in-out py-4 px-12 flex items-center fixed top-0 w-full z-50 justify-between text-white"
+  class="transition-colors transition-all duration-700 ease-in-out py-4 px-12 flex items-center fixed top-0 w-full z-50 justify-between text-white"
   id="header"
 >
   <div class="flex flex-grow basis-0">
@@ -58,4 +57,45 @@ import Logo from "./Logo.astro";
       hijo.classList.remove('bg-gray-100')
     })
   }
+
+  let lastScrollY = window.scrollY
+  const header = document.getElementById('header')
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY
+
+    if (currentScrollY > lastScrollY) {
+      // 🔽 Scroll hacia abajo: suelta el header
+      header?.classList.remove('fixed')
+      header?.classList.add('relative')
+    }
+
+    if (currentScrollY < lastScrollY && currentScrollY > 0) {
+      // 🔼 Scroll hacia arriba (pero no en el top)
+      header?.classList.remove('relative')
+      header?.classList.add('fixed')
+
+      padre?.classList.add('bg-white', 'text-black', 'transition', 'duration-300', 'ease-in-out')
+      padre?.classList.remove('text-white')
+
+      lista?.classList.add('text-black')
+      lista?.classList.remove('text-white')
+    }
+
+    if (currentScrollY === 0) {
+      // ⬆️ Volver al top: resetear estilos
+      header?.classList.remove('relative')
+      header?.classList.add('fixed')
+
+      padre?.classList.remove('bg-white', 'text-black')
+      padre?.classList.add('text-white')
+
+      lista?.classList.remove('text-black')
+      lista?.classList.add('text-white')
+    }
+
+    lastScrollY = currentScrollY
+  }
+
+  window.addEventListener('scroll', handleScroll)
 </script>
